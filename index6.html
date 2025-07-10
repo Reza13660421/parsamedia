@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پارسا مدیا - تلویزیون اینترنتی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/style7.css">
+</head>
+<body class="with-subscription-bar">
+    <!-- نوار اشتراک -->
+    <div class="subscription-bar">
+        <div class="subscription-info">
+            <span>اشتراک طلایی پارسا مدیا</span>
+            <span class="subscription-timer" id="subscriptionTimer">
+                <i class="fas fa-clock"></i> ۱۲ روز و ۴ ساعت باقیمانده
+            </span>
+        </div>
+        <div class="subscription-upgrade" onclick="window.location.href='subscription.html'">
+            <i class="fas fa-crown"></i> تمدید اشتراک
+        </div>
+    </div>
+    <!-- دکمه بازگشت -->
+    <div class="back-to-platforms">
+        <button class="back-btn" onclick="window.location.href='index3.html'">
+            <i class="fas fa-arrow-left"></i> بازگشت به گالری
+        </button>
+    </div>
+
+    <!-- هدر تلویزیون -->
+    <header class="cinema-header">
+        <div class="header-content">
+            <div class="cinema-logo">
+                <img src="img/logo.jpg" alt="پارسا مدیا" class="cinema-logo img">
+            </div>
+            <h1 class="header-title">پارسا مدیا</h1>
+            <p class="header-subtitle">تماشای زنده تمامی شبکه‌های سراسری و استانی ایران با کیفیت HD</p>
+
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="جستجوی شبکه...">
+            </div>
+
+            <div class="category-tabs">
+                <div class="category-tab active">همه شبکه‌ها</div>
+                <div class="category-tab">سراسری</div>
+                <div class="category-tab">استانی</div>
+                <div class="category-tab">خبری</div>
+                <div class="category-tab">ورزشی</div>
+                <div class="category-tab">مذهبی</div>
+                <div class="category-tab">کودک</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- پخش کننده تلویزیون -->
+    <div class="tv-player-container">
+        <div class="tv-player">
+            <div class="tv-screen" id="tvScreen">
+                <div class="channel-info">
+                    <img src="https://www.irib.ir/logo/irinn.png" alt="شبکه" class="channel-logo">
+                    <h2 class="channel-name">شبکه خبر</h2>
+                    <p class="program-title">تیتر اخبار ۲۰:۰۰</p>
+                </div>
+                <div class="tv-overlay">
+                    <div class="quality-badge">HD</div>
+                    <div class="live-badge">پخش زنده</div>
+                </div>
+            </div>
+
+            <div class="tv-controls">
+                <button class="control-btn" id="volumeBtn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80">
+                <button class="control-btn" id="fullscreenBtn">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="control-btn" id="favoriteBtn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <button class="control-btn" id="shareBtn">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <button class="control-btn" id="recordBtn">
+                    <i class="fas fa-circle"></i> ضبط
+                </button>
+            </div>
+        </div>
+
+        <div class="program-guide">
+            <h3 class="guide-title">برنامه‌های آینده</h3>
+            <div class="guide-items">
+                <div class="guide-item">
+                    <span class="guide-time">۲۰:۳۰</span>
+                    <span class="guide-program">اخبار ۲۱:۰۰</span>
+                </div>
+                <div class="guide-item">
+                    <span class="guide-time">۲۱:۰۰</span>
+                    <span class="guide-program">گزارش ویژه</span>
+                </div>
+                <div class="guide-item">
+                    <span class="guide-time">۲۱:۳۰</span>
+                    <span class="guide-program">تیتر امشب</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش ضبط برنامه‌ها -->
+    <div class="recording-section">
+        <h2 class="section-title">
+            <i class="fas fa-record-vinyl"></i> ضبط برنامه
+        </h2>
+        <div class="recording-controls">
+            <select class="recording-input" id="recordingChannel">
+                <option value="">انتخاب کانال</option>
+                <!-- لیست کانال‌ها به صورت داینامیک پر می‌شود -->
+            </select>
+            <input type="datetime-local" class="recording-input" id="recordingStart">
+            <input type="datetime-local" class="recording-input" id="recordingEnd">
+            <button class="recording-btn" id="scheduleRecording">
+                <i class="fas fa-plus"></i> زمان‌بندی ضبط
+            </button>
+        </div>
+
+        <div class="scheduled-recordings" id="scheduledRecordings">
+            <h3 class="guide-title">برنامه‌های زمان‌بندی شده برای ضبط</h3>
+            <!-- لیست ضبط‌ها به صورت داینامیک پر می‌شود -->
+        </div>
+    </div>
+
+    <!-- بخش ضبط‌های ذخیره شده -->
+    <div class="recordings-library">
+        <h2 class="section-title">
+            <i class="fas fa-folder-open"></i> آرشیو ضبط‌ها
+        </h2>
+        <div id="recordingsList">
+            <!-- لیست ضبط‌های ذخیره شده به صورت داینامیک پر می‌شود -->
+            <div class="recording-file">
+                <img src="https://via.placeholder.com/120x70" alt="پیش‌نمایش" class="recording-thumbnail">
+                <div class="recording-details">
+                    <h4>اخبار ۲۰:۰۰ - شبکه خبر</h4>
+                    <p>تاریخ ضبط: ۱۴۰۲/۱۰/۱۵ - مدت: ۱:۳۰:۰۰</p>
+                    <p>حجم: ۱.۲ گیگابایت</p>
+                </div>
+                <div class="recording-actions">
+                    <button class="action-btn"><i class="fas fa-play"></i> پخش</button>
+                    <button class="action-btn"><i class="fas fa-download"></i> دانلود</button>
+                    <button class="action-btn"><i class="fas fa-trash"></i> حذف</button>
+                </div>
+            </div>
+
+            <div class="recording-file">
+                <img src="https://via.placeholder.com/120x70" alt="پیش‌نمایش" class="recording-thumbnail">
+                <div class="recording-details">
+                    <h4>مسابقه فوتبال - شبکه ورزش</h4>
+                    <p>تاریخ ضبط: ۱۴۰۲/۱۰/۱۴ - مدت: ۲:۱۵:۰۰</p>
+                    <p>حجم: ۱.۸ گیگابایت</p>
+                </div>
+                <div class="recording-actions">
+                    <button class="action-btn"><i class="fas fa-play"></i> پخش</button>
+                    <button class="action-btn"><i class="fas fa-download"></i> دانلود</button>
+                    <button class="action-btn"><i class="fas fa-trash"></i> حذف</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- لیست کانال‌ها -->
+    <div class="movie-section">
+        <h2 class="section-title">
+            <i class="fas fa-satellite-dish"></i> شبکه‌های سراسری
+        </h2>
+        <div class="channel-slider" id="nationalChannels">
+            <!-- کانال‌های سراسری به صورت داینامیک پر می‌شود -->
+        </div>
+    </div>
+
+    <div class="movie-section">
+        <h2 class="section-title">
+            <i class="fas fa-map-marker-alt"></i> شبکه‌های استانی
+        </h2>
+        <div class="channel-slider" id="provincialChannels">
+            <!-- کانال‌های استانی به صورت داینامیک پر می‌شود -->
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.jpg" alt="پارسا مدیا">
+            </div>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">خانه</a>
+                <a href="#">درباره ما</a>
+                <a href="#">تماس با ما</a>
+                <a href="#">قوانین</a>
+                <a href="#">سوالات متداول</a>
+            </div>
+
+            <p class="copyright">تمامی حقوق برای شرکت برنامه سازان ایرانیان پاسارگاد محفوظ است © ۱۴۰۴</p>
+        </div>
+    </footer>
+
+    <script src="js/script4.js"></script>
+</body>
+</html>

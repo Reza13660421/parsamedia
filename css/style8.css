@@ -1,0 +1,836 @@
+﻿:root {
+    --primary: #D4AF37;
+    --primary-dark: #b38f2a;
+    --dark-bg: #0f0f0f;
+    --light-bg: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-gray: #aaaaaa;
+    --dropdown-bg: #2a2a2a;
+}
+/* فونت‌ها و تنظیمات پایه */
+@font-face {
+    font-family: 'IranSans';
+    src: url('fonts/IRANSansWeb.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0a0a1a;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'IranSans', sans-serif;
+}
+
+/* افکت پس‌زمینه پویا */
+.radio-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    z-index: -2;
+    overflow: hidden;
+}
+
+.radio-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(212, 175, 55, 0.5);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* هدر رادیو */
+.radio-header {
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    background: rgba(10, 10, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.radio-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    border: 1px solid #D4AF37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+    .radio-logo img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.header-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #D4AF37, #F1E5AC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.header-subtitle {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #D4AF37;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 50px;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* استایل تب‌ها از index4 */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.category-tab {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+    .category-tab:hover {
+        background: rgba(212, 175, 55, 0.5);
+    }
+
+    .category-tab.active {
+        background: rgba(212, 175, 55, 0.5);
+        color: white;
+        border-color: rgba(212, 175, 55, 0.8);
+    }
+    
+
+/* پخش کننده رادیو */
+.radio-player-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+    .radio-player-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        animation: rotate 60s linear infinite;
+        z-index: -1;
+    }
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.now-playing {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 20px;
+}
+
+.station-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid #d4af37;
+}
+
+.station-info {
+    flex: 1;
+}
+
+.station-name {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #d4af37;
+}
+
+.program-name {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.program-description {
+    font-size: 0.9rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #d4af37, #f9d423);
+    border-radius: 3px;
+    position: relative;
+}
+
+    .progress-bar::after {
+        content: '';
+        position: absolute;
+        right: -5px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+.progress-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .control-btn:hover {
+        background: rgba(212, 175, 55, 0.5);
+        transform: scale(1.1);
+    }
+
+.play-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+    background: linear-gradient(to right, #d4af37, #f9d423);
+    color: #000;
+}
+
+    .play-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+
+.additional-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-slider {
+    width: 100px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+    .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        background: #d4af37;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+/* لیست ایستگاه‌های رادیویی */
+.stations-section {
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d4af37;
+}
+
+    .section-title i {
+        font-size: 1.5rem;
+    }
+
+.stations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.station-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    position: relative;
+}
+
+    .station-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        border-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .station-card.active {
+        border: 2px solid #d4af37;
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+        .station-card.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            z-index: -1;
+        }
+
+.station-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.station-content {
+    padding: 15px;
+}
+
+.station-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.station-category {
+    font-size: 0.8rem;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.station-description {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.station-frequency {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+    .station-frequency i {
+        color: #d4af37;
+    }
+
+/* بخش ایستگاه‌های پرطرفدار */
+.popular-stations {
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+}
+
+.stations-slider {
+    position: relative;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+}
+
+.swiper-slide {
+    width: 250px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: #d4af37 !important;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+}
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+        font-size: 1.2rem !important;
+    }
+
+/* بخش برنامه‌های زنده */
+.live-programs {
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.program-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    .program-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+.program-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.program-content {
+    padding: 15px;
+}
+
+.program-title {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.program-station {
+    font-size: 0.8rem;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.program-time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+    .program-time i {
+        color: #d4af37;
+    }
+
+/* فوتر */
+.footer {
+    background: rgba(10, 10, 30, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 3rem 0;
+    margin-top: 5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-logo {
+    width: 100px;
+}
+
+    .footer-logo img {
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid #D4AF37;
+    }
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+    .social-links a {
+        color: #aaa;
+        font-size: 1.5rem;
+        transition: all 0.3s;
+    }
+
+        .social-links a:hover {
+            color: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .footer-links a {
+        color: #aaa;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+        .footer-links a:hover {
+            color: #D4AF37;
+        }
+
+.copyright {
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* دکمه بازگشت */
+.back-to-platforms {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.back-btn {
+    background: rgba(212, 175, 55, 0.7);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'IranSans', sans-serif;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .back-btn:hover {
+        background: rgba(212, 175, 55, 0.9);
+    }
+
+/* رسپانسیو */
+@media (max-width: 768px) {
+    .radio-title {
+        font-size: 2rem;
+    }
+
+    .radio-subtitle {
+        font-size: 1rem;
+    }
+
+    .now-playing {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .swiper-slide {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .radio-title {
+        font-size: 1.8rem;
+    }
+
+    .radio-logo {
+        width: 100px;
+        height: 100px;
+    }
+
+        .radio-logo img {
+            width: 60px;
+            height: 60px;
+        }
+
+    .station-card {
+        grid-column: 1 / -1;
+    }
+
+    .swiper-slide {
+        width: 180px;
+    }
+}
+
+/* استایل‌های انیمیشن تغییر کانال */
+.tuning-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+    .tuning-overlay.active {
+        opacity: 1;
+    }
+
+.radio-waves {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    margin-bottom: 30px;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    opacity: 0.7;
+    animation: waveAnimation 1.5s infinite ease-in-out;
+}
+
+    .wave:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .wave:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .wave:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+@keyframes waveAnimation {
+    0% {
+        transform: scaleX(0.1);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scaleX(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scaleX(0.1);
+        opacity: 0;
+    }
+}
+
+.frequency-display {
+    font-size: 2rem;
+    color: #d4af37;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    animation: frequencyChange 0.5s infinite alternate;
+}
+
+@keyframes frequencyChange {
+    from {
+        opacity: 0.5;
+        text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+
+    to {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+    }
+}
+/* استایل نوار اشتراک - باید به همه صفحات اضافه شود */
+.subscription-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, rgba(212,175,55,0.9) 0%, rgba(236,200,80,0.9) 100%);
+    color: white;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-family: 'IranSans', sans-serif;
+}
+
+.subscription-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.subscription-timer {
+    background: rgba(0,0,0,0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.subscription-upgrade {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .subscription-upgrade:hover {
+        background: rgba(255,255,255,0.3);
+    }
+
+/* برای صفحاتی که هدر ثابت دارند، padding-top اضافه می‌کنیم */
+body.with-subscription-bar {
+    padding-top: 50px;
+}
+/* در استایل این صفحات */
+.back-to-platforms {
+    position: fixed;
+    top: 50px; /* ارتفاع نوار اشتراک */
+    left: 20px;
+    z-index: 100;
+}

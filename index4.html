@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سینمای پارسا - تماشای انحصاری فیلم و سریال</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style5.css">
+</head>
+<body class="with-subscription-bar">
+    <!-- نوار اشتراک -->
+    <div class="subscription-bar">
+        <div class="subscription-info">
+            <span>اشتراک طلایی پارسا مدیا</span>
+            <span class="subscription-timer" id="subscriptionTimer">
+                <i class="fas fa-clock"></i> ۱۲ روز و ۴ ساعت باقیمانده
+            </span>
+        </div>
+        <div class="subscription-upgrade" onclick="window.location.href='subscription.html'">
+            <i class="fas fa-crown"></i> تمدید اشتراک
+        </div>
+    </div>
+    <!-- دکمه بازگشت -->
+    <div class="back-to-platforms">
+        <button class="back-btn" onclick="window.location.href='index3.html'">
+            <i class="fas fa-arrow-right"></i> بازگشت به گالری
+        </button>
+    </div>
+
+    <!-- هدر سینما -->
+    <header class="cinema-header">
+        <div class="header-content">
+            <div class="cinema-logo">
+                <img src="img/logo.jpg" alt="سینمای پارسا" class="cinema-logo">
+            </div>
+            <h1 class="header-title">سینمای پارسا</h1>
+            <p class="header-subtitle">تماشای انحصاری هزاران عنوان فیلم و سریال با کیفیت 4K HDR و دوبله اختصاصی</p>
+
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="جستجوی فیلم، سریال، بازیگر...">
+            </div>
+
+            <!-- تب‌های دسته‌بندی از index4 -->
+            <div class="category-tabs">
+                <div class="category-tab active">همه</div>
+                <div class="category-tab">فیلم</div>
+                <div class="category-tab">سریال</div>
+                <div class="category-tab">ایرانی</div>
+                <div class="category-tab">خارجی</div>
+                <div class="category-tab">اکشن</div>
+                <div class="category-tab">درام</div>
+                <div class="category-tab">کمدی</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- فیلم ویژه -->
+    <div class="featured-movie">
+        <img src="img/featured-movie.jpg" alt="فیلم ویژه" class="featured-background">
+        <div class="featured-content">
+            <h2 class="featured-title">هفتاد سی</h2>
+            <div class="featured-info">
+                <span>2023</span>
+                <span>139 دقیقه</span>
+                <span class="movie-rating"><i class="fas fa-star"></i> 8.9/10</span>
+                <span>+18</span>
+            </div>
+            <p class="featured-description">
+                داستان یک گروه از سربازان ایرانی در عملیات ویژه که در مرزهای غربی کشور با چالش‌های غیرمنتظره‌ای روبرو می‌شوند. این فیلم با نگاهی واقع‌گرایانه به روایت دلاوری‌ها و فداکاری‌های این سربازان می‌پردازد.
+            </p>
+            <div class="featured-actions">
+                <button class="watch-btn">
+                    <i class="fas fa-play"></i> پخش
+                </button>
+                <button class="detail-btn">
+                    <i class="fas fa-info-circle"></i> جزئیات
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش‌های مختلف -->
+    <div class="movie-section">
+        <h2 class="section-title">
+            <i class="fas fa-fire"></i> پربازدیدترین‌ها
+        </h2>
+        <div class="movie-slider">
+            <div class="movie-card">
+                <div class="quality-badge">4K HDR</div>
+                <div class="age-badge">+18</div>
+                <img src="img/movie1.jpg" alt="فیلم 1" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">تاسیان</h3>
+                    <div class="movie-meta">
+                        <span>2023</span>
+                        <span class="movie-rating">8.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">FHD</div>
+                <img src="img/movie2.jpg" alt="فیلم 2" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">پدرخوانده</h3>
+                    <div class="movie-meta">
+                        <span>1972</span>
+                        <span class="movie-rating">9.2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">4K</div>
+                <div class="age-badge">+16</div>
+                <img src="img/movie3.jpg" alt="فیلم 3" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">شوالیه تاریکی</h3>
+                    <div class="movie-meta">
+                        <span>2008</span>
+                        <span class="movie-rating">9.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">FHD</div>
+                <img src="img/movie4.jpg" alt="فیلم 4" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">انگل</h3>
+                    <div class="movie-meta">
+                        <span>2019</span>
+                        <span class="movie-rating">8.6</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">4K HDR</div>
+                <div class="age-badge">+18</div>
+                <img src="img/movie5.jpg" alt="فیلم 5" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">حرامزاده‌های لعنتی</h3>
+                    <div class="movie-meta">
+                        <span>2009</span>
+                        <span class="movie-rating">8.3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="movie-section">
+        <h2 class="section-title">
+            <i class="fas fa-clock"></i> تازه‌های سینمای پارسا
+        </h2>
+        <div class="movie-slider">
+            <div class="movie-card">
+                <div class="quality-badge">4K</div>
+                <img src="img/new1.jpg" alt="فیلم جدید 1" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">پروژه آدام</h3>
+                    <div class="movie-meta">
+                        <span>2023</span>
+                        <span class="movie-rating">7.8</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">4K HDR</div>
+                <div class="age-badge">+16</div>
+                <img src="img/new2.jpg" alt="فیلم جدید 2" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">کشتن عمو</h3>
+                    <div class="movie-meta">
+                        <span>2023</span>
+                        <span class="movie-rating">8.1</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">FHD</div>
+                <img src="img/new3.jpg" alt="فیلم جدید 3" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">زیر آب</h3>
+                    <div class="movie-meta">
+                        <span>2023</span>
+                        <span class="movie-rating">7.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">4K</div>
+                <div class="age-badge">+18</div>
+                <img src="img/new4.jpg" alt="فیلم جدید 4" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">پستچی</h3>
+                    <div class="movie-meta">
+                        <span>2023</span>
+                        <span class="movie-rating">8.4</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">FHD</div>
+                <img src="img/new5.jpg" alt="فیلم جدید 5" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">خانه آخر</h3>
+                    <div class="movie-meta">
+                        <span>2023</span>
+                        <span class="movie-rating">7.9</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="movie-section">
+        <h2 class="section-title">
+            <i class="fas fa-trophy"></i> برترین‌های تاریخ سینما
+        </h2>
+        <div class="movie-slider">
+            <div class="movie-card">
+                <div class="quality-badge">4K HDR</div>
+                <img src="img/top1.jpg" alt="فیلم برتر 1" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">فرار از شاوشنک</h3>
+                    <div class="movie-meta">
+                        <span>1994</span>
+                        <span class="movie-rating">9.3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">4K</div>
+                <img src="img/top2.jpg" alt="فیلم برتر 2" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">مردی که سینما را تغییر داد</h3>
+                    <div class="movie-meta">
+                        <span>2011</span>
+                        <span class="movie-rating">9.1</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">4K HDR</div>
+                <div class="age-badge">+16</div>
+                <img src="img/top3.jpg" alt="فیلم برتر 3" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">پاراسایت</h3>
+                    <div class="movie-meta">
+                        <span>2019</span>
+                        <span class="movie-rating">8.6</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">FHD</div>
+                <img src="img/top4.jpg" alt="فیلم برتر 4" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">فهرست شیندلر</h3>
+                    <div class="movie-meta">
+                        <span>1993</span>
+                        <span class="movie-rating">9.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="quality-badge">4K</div>
+                <div class="age-badge">+18</div>
+                <img src="img/top5.jpg" alt="فیلم برتر 5" class="movie-poster">
+                <div class="movie-overlay">
+                    <h3 class="movie-title">جادوگران ایستویک</h3>
+                    <div class="movie-meta">
+                        <span>1987</span>
+                        <span class="movie-rating">8.8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.jpg" alt="پارسا مدیا" class="cinema-logo">
+            </div>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">خانه</a>
+                <a href="#">درباره ما</a>
+                <a href="#">تماس با ما</a>
+                <a href="#">قوانین</a>
+                <a href="#">سوالات متداول</a>
+            </div>
+
+            <p class="copyright">تمامی حقوق برای شرکت برنامه سازان ایرانیان پاسارگاد محفوظ است © ۱۴۰۴</p>
+        </div>
+    </footer>
+
+    <script src="js/script2.js " defer></script>
+</body>
+</html>

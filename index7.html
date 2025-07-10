@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رادیو گلد پارسا - تجربه شنیداری استثنایی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style8.css">
+</head>
+<body class="with-subscription-bar">
+    <!-- نوار اشتراک -->
+    <div class="subscription-bar">
+        <div class="subscription-info">
+            <span>اشتراک طلایی پارسا مدیا</span>
+            <span class="subscription-timer" id="subscriptionTimer">
+                <i class="fas fa-clock"></i> ۱۲ روز و ۴ ساعت باقیمانده
+            </span>
+        </div>
+        <div class="subscription-upgrade" onclick="window.location.href='subscription.html'">
+            <i class="fas fa-crown"></i> تمدید اشتراک
+        </div>
+    </div>
+    <!-- دکمه بازگشت -->
+    <div class="back-to-platforms">
+        <button class="back-btn" onclick="window.location.href='index3.html'">
+            <i class="fas fa-arrow-right"></i> بازگشت
+        </button>
+    </div>
+
+    <!-- افکت‌های پس‌زمینه -->
+    <div class="radio-background"></div>
+    <div class="radio-particles" id="particles"></div>
+
+    <!-- انیمیشن تغییر کانال -->
+    <div class="tuning-overlay" id="tuningOverlay">
+        <div class="radio-waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="frequency-display">
+            <span id="currentFrequency">93.5</span> MHz
+        </div>
+    </div>
+
+    <!-- هدر رادیو -->
+    <header class="radio-header">
+        <div class="header-content">
+            <div class="radio-logo">
+                <img src="img/logo.jpg" alt="رادیو گلد پارسا" class="radio-logo img">
+            </div>
+            <h1 class="header-title">رادیو گلد پارسا</h1>
+            <p class="header-subtitle"> تجربه شنیداری استثنایی با کیفیت صدای HD و آرشیو بی‌نظیر</p>
+
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="جستجوی ایستگاه، برنامه یا ژانر...">
+            </div>
+
+            <div class="category-tabs">
+                <div class="category-tab active">همه</div>
+                <div class="category-tab">موسیقی</div>
+                <div class="category-tab">خبری</div>
+                <div class="category-tab">ورزشی</div>
+                <div class="category-tab">مذهبی</div>
+                <div class="category-tab">محلی</div>
+                <div class="category-tab">بین‌المللی</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- پخش کننده رادیو -->
+    <div class="radio-player-container">
+        <div class="now-playing">
+            <img src="https://www.irib.ir/logo/radio-iran.png" alt="رادیو ایران" class="station-logo">
+            <div class="station-info">
+                <h2 class="station-name">رادیو ایران</h2>
+                <p class="program-name">برنامه صبحگاهی ایران امروز</p>
+                <p class="program-description">برنامه صبحگاهی رادیو ایران با اخبار روز، گزارش‌های ویژه و موسیقی‌های شاد و انرژی‌بخش</p>
+            </div>
+        </div>
+
+        <div class="player-controls">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-time">
+                <span id="currentTime">10:25</span>
+                <span id="duration">12:00</span>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn" id="prevBtn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="control-btn play-btn" id="playBtn">
+                    <i class="fas fa-pause" id="playIcon"></i>
+                </button>
+                <button class="control-btn" id="nextBtn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+
+            <div class="additional-controls">
+                <button class="control-btn" id="favoriteBtn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <button class="control-btn" id="shareBtn">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <button class="control-btn" id="recordBtn">
+                    <i class="fas fa-microphone"></i>
+                </button>
+
+                <div class="volume-container">
+                    <i class="fas fa-volume-up" id="volumeIcon"></i>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- لیست ایستگاه‌های رادیویی -->
+    <div class="stations-section">
+        <h2 class="section-title">
+            <i class="fas fa-broadcast-tower"></i> ایستگاه‌های رادیویی
+        </h2>
+
+        <div class="stations-grid">
+            <!-- رادیو ایران -->
+            <div class="station-card active">
+                <img src="https://www.irib.ir/logo/radio-iran.png" alt="رادیو ایران" class="station-image">
+                <div class="station-content">
+                    <h3 class="station-title">رادیو ایران</h3>
+                    <p class="station-category">عمومی</p>
+                    <p class="station-description">رادیو ایران با پخش برنامه‌های عمومی، خبری، فرهنگی و تفریحی</p>
+                    <div class="station-frequency">
+                        <i class="fas fa-wave-square"></i>
+                        <span>FM 93.5 MHz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رادیو فرهنگ -->
+            <div class="station-card">
+                <img src="https://www.irib.ir/logo/radio-farhang.png" alt="رادیو فرهنگ" class="station-image">
+                <div class="station-content">
+                    <h3 class="station-title">رادیو فرهنگ</h3>
+                    <p class="station-category">فرهنگی</p>
+                    <p class="station-description">رادیو فرهنگ با محوریت برنامه‌های فرهنگی، هنری و ادبی</p>
+                    <div class="station-frequency">
+                        <i class="fas fa-wave-square"></i>
+                        <span>FM 106.7 MHz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رادیو جوان -->
+            <div class="station-card">
+                <img src="https://www.irib.ir/logo/radio-javan.png" alt="رادیو جوان" class="station-image">
+                <div class="station-content">
+                    <h3 class="station-title">رادیو جوان</h3>
+                    <p class="station-category">جوانان</p>
+                    <p class="station-description">رادیویی ویژه جوانان با برنامه‌های شاد، موسیقی و گفتگوهای جوانانه</p>
+                    <div class="station-frequency">
+                        <i class="fas fa-wave-square"></i>
+                        <span>FM 103.5 MHz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رادیو ورزش -->
+            <div class="station-card">
+                <img src="https://www.irib.ir/logo/radio-varzesh.png" alt="رادیو ورزش" class="station-image">
+                <div class="station-content">
+                    <h3 class="station-title">رادیو ورزش</h3>
+                    <p class="station-category">ورزشی</p>
+                    <p class="station-description">پخش زنده مسابقات ورزشی، تحلیل و اخبار حوزه ورزش</p>
+                    <div class="station-frequency">
+                        <i class="fas fa-wave-square"></i>
+                        <span>FM 107.5 MHz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رادیو قرآن -->
+            <div class="station-card">
+                <img src="https://www.irib.ir/logo/radio-quran.png" alt="رادیو قرآن" class="station-image">
+                <div class="station-content">
+                    <h3 class="station-title">رادیو قرآن</h3>
+                    <p class="station-category">مذهبی</p>
+                    <p class="station-description">پخش قرآن کریم، برنامه‌های مذهبی و آموزش مفاهیم قرآنی</p>
+                    <div class="station-frequency">
+                        <i class="fas fa-wave-square"></i>
+                        <span>FM 89.5 MHz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- رادیو تهران -->
+            <div class="station-card">
+                <img src="https://www.irib.ir/logo/radio-tehran.png" alt="رادیو تهران" class="station-image">
+                <div class="station-content">
+                    <h3 class="station-title">رادیو تهران</h3>
+                    <p class="station-category">محلی</p>
+                    <p class="station-description">اخبار و برنامه‌های ویژه استان تهران و شهروندان تهرانی</p>
+                    <div class="station-frequency">
+                        <i class="fas fa-wave-square"></i>
+                        <span>FM 94.0 MHz</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ایستگاه‌های پرطرفدار -->
+    <div class="popular-stations">
+        <h2 class="section-title">
+            <i class="fas fa-fire"></i> پرطرفدارترین‌ها
+        </h2>
+
+        <div class="stations-slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- رادیو پیام -->
+                    <div class="swiper-slide">
+                        <div class="station-card">
+                            <img src="https://www.irib.ir/logo/radio-payam.png" alt="رادیو پیام" class="station-image">
+                            <div class="station-content">
+                                <h3 class="station-title">رادیو پیام</h3>
+                                <p class="station-category">خبری</p>
+                                <div class="station-frequency">
+                                    <i class="fas fa-wave-square"></i>
+                                    <span>FM 90.5 MHz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- رادیو نمایش -->
+                    <div class="swiper-slide">
+                        <div class="station-card">
+                            <img src="https://www.irib.ir/logo/radio-namayesh.png" alt="رادیو نمایش" class="station-image">
+                            <div class="station-content">
+                                <h3 class="station-title">رادیو نمایش</h3>
+                                <p class="station-category">درام</p>
+                                <div class="station-frequency">
+                                    <i class="fas fa-wave-square"></i>
+                                    <span>FM 101.5 MHz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- رادیو سلامت -->
+                    <div class="swiper-slide">
+                        <div class="station-card">
+                            <img src="https://www.irib.ir/logo/radio-salamat.png" alt="رادیو سلامت" class="station-image">
+                            <div class="station-content">
+                                <h3 class="station-title">رادیو سلامت</h3>
+                                <p class="station-category">سلامت</p>
+                                <div class="station-frequency">
+                                    <i class="fas fa-wave-square"></i>
+                                    <span>FM 102.0 MHz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- رادیو گفتگو -->
+                    <div class="swiper-slide">
+                        <div class="station-card">
+                            <img src="https://www.irib.ir/logo/radio-goftogo.png" alt="رادیو گفتگو" class="station-image">
+                            <div class="station-content">
+                                <h3 class="station-title">رادیو گفتگو</h3>
+                                <p class="station-category">گفتگومحور</p>
+                                <div class="station-frequency">
+                                    <i class="fas fa-wave-square"></i>
+                                    <span>FM 103.0 MHz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- رادیو اقتصاد -->
+                    <div class="swiper-slide">
+                        <div class="station-card">
+                            <img src="https://www.irib.ir/logo/radio-eghtesad.png" alt="رادیو اقتصاد" class="station-image">
+                            <div class="station-content">
+                                <h3 class="station-title">رادیو اقتصاد</h3>
+                                <p class="station-category">اقتصادی</p>
+                                <div class="station-frequency">
+                                    <i class="fas fa-wave-square"></i>
+                                    <span>FM 98.5 MHz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- رادیو البرز -->
+                    <div class="swiper-slide">
+                        <div class="station-card">
+                            <img src="https://www.irib.ir/logo/radio-alborz.png" alt="رادیو البرز" class="station-image">
+                            <div class="station-content">
+                                <h3 class="station-title">رادیو البرز</h3>
+                                <p class="station-category">محلی</p>
+                                <div class="station-frequency">
+                                    <i class="fas fa-wave-square"></i>
+                                    <span>FM 91.0 MHz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- برنامه‌های زنده -->
+    <div class="live-programs">
+        <h2 class="section-title">
+            <i class="fas fa-tv"></i> برنامه‌های زنده
+        </h2>
+
+        <div class="programs-grid">
+            <!-- برنامه 1 -->
+            <div class="program-card">
+                <img src="https://via.placeholder.com/300x150" alt="برنامه زنده" class="program-image">
+                <div class="program-content">
+                    <h3 class="program-title">گفتگوی ویژه با وزیر بهداشت</h3>
+                    <p class="program-station">رادیو سلامت</p>
+                    <div class="program-time">
+                        <i class="far fa-clock"></i>
+                        <span>20:30 - 21:30</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- برنامه 2 -->
+            <div class="program-card">
+                <img src="https://via.placeholder.com/300x150" alt="برنامه زنده" class="program-image">
+                <div class="program-content">
+                    <h3 class="program-title">مسابقه فوتبال: استقلال - پرسپولیس</h3>
+                    <p class="program-station">رادیو ورزش</p>
+                    <div class="program-time">
+                        <i class="far fa-clock"></i>
+                        <span>18:00 - 20:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- برنامه 3 -->
+            <div class="program-card">
+                <img src="https://via.placeholder.com/300x150" alt="برنامه زنده" class="program-image">
+                <div class="program-content">
+                    <h3 class="program-title">موسیقی نواحی ایران</h3>
+                    <p class="program-station">رادیو فرهنگ</p>
+                    <div class="program-time">
+                        <i class="far fa-clock"></i>
+                        <span>22:00 - 23:30</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- برنامه 4 -->
+            <div class="program-card">
+                <img src="https://via.placeholder.com/300x150" alt="برنامه زنده" class="program-image">
+                <div class="program-content">
+                    <h3 class="program-title">اخبار ویژه اقتصادی</h3>
+                    <p class="program-station">رادیو اقتصاد</p>
+                    <div class="program-time">
+                        <i class="far fa-clock"></i>
+                        <span>19:00 - 19:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.jpg" alt="پارسا مدیا">
+            </div>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">خانه</a>
+                <a href="#">درباره ما</a>
+                <a href="#">تماس با ما</a>
+                <a href="#">قوانین</a>
+                <a href="#">سوالات متداول</a>
+            </div>
+
+            <p class="copyright">تمامی حقوق برای شرکت برنامه سازان ایرانیان پاسارگاد محفوظ است © ۱۴۰۴</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="js/script5.js"></script>
+</body>
+</html>

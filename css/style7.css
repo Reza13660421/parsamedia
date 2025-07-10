@@ -1,0 +1,999 @@
+﻿:root {
+    --primary: #D4AF37;
+    --primary-dark: #b38f2a;
+    --dark-bg: #0f0f0f;
+    --light-bg: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-gray: #aaaaaa;
+    --dropdown-bg: #2a2a2a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0a0a1a;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'IranSans', sans-serif;
+}
+
+/* استایل هدر */
+.cinema-header {
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    background: rgba(10, 10, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.cinema-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    border: 1px solid #D4AF37; 
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+.cinema-logo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.header-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #D4AF37, #F1E5AC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.header-subtitle {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #D4AF37;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 50px;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* استایل تب‌ها از index4 */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.category-tab {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+    .category-tab:hover {
+        background: rgba(212, 175, 55, 0.5);
+    }
+
+    .category-tab.active {
+        background: rgba(212, 175, 55, 0.5);
+        color: white;
+        border-color: rgba(212, 175, 55, 0.8);
+    }
+    
+
+/* استایل پخش کننده تلویزیون */
+.tv-player-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.tv-player {
+    background: rgba(20, 20, 30, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transition: all 0.3s;
+}
+
+    .tv-player:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+
+.tv-screen {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+    .tv-screen::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+        z-index: 1;
+    }
+
+.tv-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.quality-badge {
+    background-color: var(--primary);
+    color: black;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    animation: bounceIn 0.5s ease-out;
+}
+
+.live-badge {
+    background-color: #e50914;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+}
+
+.channel-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: fadeInLeft 0.5s ease-out;
+}
+
+.channel-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    object-fit: cover;
+    background-color: var(--dropdown-bg);
+}
+
+.channel-name {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+.program-title {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.tv-controls {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    gap: 15px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .control-btn:hover {
+        color: var(--primary);
+        transform: scale(1.1);
+    }
+
+.volume-slider {
+    width: 100px;
+    -webkit-appearance: none;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+    .volume-slider:hover {
+        height: 6px;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 14px;
+        height: 14px;
+        background: var(--primary);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 5px rgba(212, 175, 55, 0.8);
+    }
+
+.program-guide {
+    background: rgba(20, 20, 30, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.guide-title {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.guide-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guide-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+}
+
+    .guide-item:hover {
+        background: rgba(212, 175, 55, 0.1);
+        transform: translateX(5px);
+    }
+
+.guide-time {
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.guide-program {
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* استایل‌های لیست کانال‌ها */
+.movie-section {
+    padding: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+}
+
+    .section-title i {
+        margin-left: 10px;
+    }
+
+.channel-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--dark-bg);
+}
+
+    .channel-slider::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .channel-slider::-webkit-scrollbar-thumb {
+        background-color: var(--primary);
+        border-radius: 4px;
+    }
+
+.channel-card {
+    min-width: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    animation: zoomIn 0.5s ease-out;
+}
+
+    .channel-card:hover {
+        transform: scale(1.05);
+        z-index: 10;
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    }
+
+.channel-poster {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    transition: all 0.3s;
+    background-color: var(--dropdown-bg);
+}
+
+.channel-card:hover .channel-poster {
+    transform: scale(1.1);
+}
+
+.channel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+.channel-card:hover .channel-overlay {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+
+.channel-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: white;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.channel-card:hover .channel-title {
+    color: var(--primary);
+}
+
+
+/* فوتر */
+.footer {
+    background: rgba(10, 10, 30, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 3rem 0;
+    margin-top: 5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-logo {
+    width: 100px;
+}
+
+    .footer-logo img {
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid #D4AF37;
+    }
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+    .social-links a {
+        color: #aaa;
+        font-size: 1.5rem;
+        transition: all 0.3s;
+    }
+
+        .social-links a:hover {
+            color: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .footer-links a {
+        color: #aaa;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+        .footer-links a:hover {
+            color: #D4AF37;
+        }
+
+.copyright {
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* استایل دکمه بازگشت */
+.back-to-platforms {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    animation: fadeIn 1s ease-out;
+}
+
+.back-btn {
+    background: rgba(212, 175, 55, 0.7);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .back-btn:hover {
+        background: rgba(212, 175, 55, 0.9);
+        transform: translateX(-5px);
+    }
+
+/* استایل اعلان تغییر کانال */
+.channel-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid var(--primary);
+}
+
+    .channel-notification.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+.notification-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+    object-fit: cover;
+    background-color: var(--dropdown-bg);
+}
+
+.notification-text {
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* استایل جدید برای بخش ضبط */
+.recording-section {
+    background: rgba(20, 20, 30, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border: 1px solid var(--primary);
+    animation: slideInUp 0.5s ease-out;
+}
+
+.recording-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.recording-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s;
+}
+
+    .recording-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+.recording-btn {
+    background: var(--primary);
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+    .recording-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+.scheduled-recordings {
+    margin-top: 20px;
+}
+
+.recording-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--primary);
+    animation: fadeIn 0.5s ease-out;
+    transition: all 0.3s;
+}
+
+    .recording-item:hover {
+        background: rgba(0, 0, 0, 0.5);
+        transform: translateX(5px);
+    }
+
+.delete-recording {
+    background: transparent;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+    .delete-recording:hover {
+        color: #ff0000;
+        transform: scale(1.2);
+    }
+
+/* استایل بخش ضبط‌های ذخیره شده */
+.recordings-library {
+    background: rgba(20, 20, 30, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border: 1px solid var(--primary);
+    animation: fadeIn 1s ease-out;
+}
+
+.recording-file {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+}
+
+    .recording-file:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+.recording-thumbnail {
+    width: 120px;
+    height: 70px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-left: 15px;
+    background-color: var(--dropdown-bg);
+}
+
+.recording-details {
+    flex: 1;
+}
+
+.recording-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: rgba(212, 175, 55, 0.2);
+    border: none;
+    color: var(--primary);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .action-btn:hover {
+        background: rgba(212, 175, 55, 0.4);
+    }
+
+/* رسپانسیو */
+@media (max-width: 768px) {
+    .cinema-header {
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .cinema-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .channel-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .channel-name {
+        font-size: 1.2rem;
+    }
+
+    .program-title {
+        font-size: 0.8rem;
+    }
+
+    .channel-card {
+        min-width: 150px;
+    }
+
+    .tv-player-container {
+        padding: 0 1rem;
+    }
+
+    .recording-controls {
+        flex-direction: column;
+    }
+
+    .recording-input {
+        width: 100%;
+    }
+
+    .recording-file {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .recording-thumbnail {
+        margin-left: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .recording-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .channel-card {
+        min-width: 120px;
+    }
+
+    .channel-poster {
+        height: 80px;
+    }
+
+    .header-title {
+        font-size: 1.8rem;
+    }
+
+    .search-input {
+        padding: 10px 40px 10px 15px;
+    }
+
+    .category-tabs {
+        gap: 5px;
+    }
+
+    .category-tab {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .recording-section {
+        padding: 15px;
+    }
+
+    .recording-btn {
+        width: 100%;
+    }
+}
+/* استایل‌های جدید برای کشوی انتخاب کانال */
+#recordingChannel {
+    background-color: #2a2a2a;
+    color: #f5f5f5;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    #recordingChannel option {
+        background-color: #2a2a2a;
+        color: #f5f5f5;
+        padding: 10px;
+    }
+
+        #recordingChannel option:hover {
+            background-color: #D4AF37 !important;
+            color: #000 !important;
+        }
+
+/* استایل فلش کشوی انتخاب */
+.select-wrapper {
+    position: relative;
+}
+
+    .select-wrapper::after {
+        content: "▼";
+        font-size: 0.8rem;
+        color: #D4AF37;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+/* بهبود نمایش لوگوها */
+.channel-logo, .notification-logo {
+    object-fit: cover;
+    background-color: #2a2a2a;
+    padding: 2px;
+}
+
+/* استایل‌های پیشرفته برای بخش آرشیو ضبط‌ها */
+.recording-library-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.recording-filter {
+    background-color: #2a2a2a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #f5f5f5;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.recording-file {
+    background: rgba(42, 42, 42, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+    border-left: 4px solid var(--primary);
+    display: flex;
+    align-items: center;
+}
+
+    .recording-file:hover {
+        background: rgba(42, 42, 42, 0.9);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    }
+
+.recording-thumbnail {
+    width: 120px;
+    height: 70px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-left: 15px;
+    background-color: #2a2a2a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.recording-details {
+    flex: 1;
+}
+
+    .recording-details h4 {
+        color: var(--primary);
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+    }
+
+    .recording-details p {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+.recording-meta {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+    .recording-meta span {
+        display: flex;
+        align-items: center;
+        color: var(--text-gray);
+        font-size: 0.8rem;
+    }
+
+    .recording-meta i {
+        margin-left: 5px;
+        color: var(--primary);
+    }
+
+.recording-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .action-btn:hover {
+        background: rgba(212, 175, 55, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .action-btn.delete {
+        background: rgba(255, 0, 0, 0.1);
+        border-color: rgba(255, 0, 0, 0.3);
+        color: #ff6b6b;
+    }
+
+        .action-btn.delete:hover {
+            background: rgba(255, 0, 0, 0.3);
+            color: #ff0000;
+        }
+/* استایل نوار اشتراک - باید به همه صفحات اضافه شود */
+.subscription-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, rgba(212,175,55,0.9) 0%, rgba(236,200,80,0.9) 100%);
+    color: white;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-family: 'IranSans', sans-serif;
+}
+
+.subscription-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.subscription-timer {
+    background: rgba(0,0,0,0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.subscription-upgrade {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .subscription-upgrade:hover {
+        background: rgba(255,255,255,0.3);
+    }
+
+/* برای صفحاتی که هدر ثابت دارند، padding-top اضافه می‌کنیم */
+body.with-subscription-bar {
+    padding-top: 50px;
+}
+/* در استایل این صفحات */
+.back-to-platforms {
+    position: fixed;
+    top: 50px; /* ارتفاع نوار اشتراک */
+    left: 20px;
+    z-index: 100;
+}

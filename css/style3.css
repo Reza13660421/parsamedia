@@ -1,0 +1,714 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    direction: rtl;
+    font-size: 12px;
+}
+
+.background-static {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/1.png');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+    z-index: -2;
+    opacity: 0.5;
+}
+
+.accounts-container {
+    width: 95%;
+    max-width: 400px;
+    margin: 10px auto;
+    background: rgba(20, 20, 30, 0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    padding: 15px 10px;
+    position: relative;
+    animation: fadeIn 0.5s ease-out;
+    z-index: 10;
+}
+
+.persepolis-column {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 15px;
+    background: linear-gradient(to bottom, transparent 10%, rgba(212, 175, 55, 0.1) 10%, rgba(212, 175, 55, 0.1) 15%, transparent 15%, transparent 85%, rgba(212, 175, 55, 0.1) 85%, rgba(212, 175, 55, 0.1) 90%, transparent 90%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path d="M7,0 L10,3 L10,5 L7,8 L4,5 L4,3 Z" fill="none" stroke="%23d4af37" stroke-width="0.5" opacity="0.3"/></svg>');
+}
+
+.column-left {
+    left: 0;
+    border-left: 1px solid #d4af37;
+}
+
+.column-right {
+    right: 0;
+    border-right: 1px solid #d4af37;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 8px;
+    border-radius: 50%;
+    border: 1px solid #d4af37;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.account-card {
+    background: rgba(30, 30, 40, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 11px;
+}
+
+    .account-card:hover {
+        transform: translateY(-2px);
+        border-color: #d4af37;
+        box-shadow: 0 3px 10px rgba(212, 175, 55, 0.15);
+    }
+
+    .account-card.active {
+        border: 1px solid #d4af37;
+        background: rgba(212, 175, 55, 0.1);
+    }
+
+    .account-card.locked {
+        border: 1px solid rgba(255, 0, 0, 0.4);
+        background: rgba(255, 0, 0, 0.08);
+    }
+
+.account-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #d4af37;
+    margin-left: 8px;
+}
+
+.default-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c1a0d;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-left: 8px;
+    border: 1px solid #d4af37;
+}
+
+.account-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.account-name {
+    font-size: 0.8rem;
+    color: #d4af37;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.account-status {
+    display: inline-block;
+    font-size: 0.55rem;
+    padding: 1px 5px;
+    border-radius: 6px;
+    margin-right: 6px;
+}
+
+.status-active {
+    background: rgba(0, 255, 0, 0.15);
+    color: #a0e0a0;
+}
+
+.status-inactive {
+    background: rgba(255, 255, 0, 0.15);
+    color: #ffffa0;
+}
+
+.status-locked {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff6b6b;
+}
+
+.account-meta {
+    font-size: 0.55rem;
+    color: #e0d6c2;
+    margin-top: 2px;
+    display: flex;
+    gap: 5px;
+}
+
+.account-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.account-btn {
+    padding: 2px 5px;
+    border-radius: 4px;
+    border: none;
+    font-size: 0.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.login-btn {
+    background: #d4af37;
+    color: #2c1a0d;
+}
+
+    .login-btn:hover {
+        background: #b8860b;
+    }
+
+.logout-btn {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff6b6b;
+}
+
+    .logout-btn:hover {
+        background: rgba(255, 0, 0, 0.25);
+    }
+
+.delete-btn {
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff6b6b;
+}
+
+    .delete-btn:hover {
+        background: rgba(255, 0, 0, 0.25);
+    }
+
+.unlock-btn {
+    background: rgba(0, 255, 0, 0.15);
+    color: #a0e0a0;
+}
+
+    .unlock-btn:hover {
+        background: rgba(0, 255, 0, 0.25);
+    }
+
+.recover-btn {
+    background: rgba(0, 150, 255, 0.15);
+    color: #6bb9ff;
+}
+
+    .recover-btn:hover {
+        background: rgba(0, 150, 255, 0.25);
+    }
+
+.add-account-section {
+    margin-top: 12px;
+}
+
+.add-account-btn {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: rgba(30, 30, 40, 0.7);
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+    border-radius: 8px;
+    color: #d4af37;
+    font-size: 0.7rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .add-account-btn:hover {
+        background: rgba(212, 175, 55, 0.08);
+        border-style: solid;
+    }
+
+    .add-account-btn i {
+        margin-left: 4px;
+        font-size: 0.7rem;
+    }
+
+.max-accounts-message {
+    text-align: center;
+    color: #ff6b6b;
+    margin-top: 8px;
+    font-size: 0.6rem;
+    display: none;
+}
+
+.add-account-form {
+    display: none;
+    margin-top: 12px;
+    animation: fadeIn 0.3s ease-out;
+    background: rgba(30, 30, 40, 0.7);
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    font-size: 11px;
+}
+
+.form-section {
+    margin-bottom: 12px;
+}
+
+.form-section-title {
+    color: #d4af37;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+    .form-section-title i {
+        margin-left: 4px;
+        font-size: 0.7rem;
+    }
+
+.form-group {
+    margin-bottom: 8px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 4px;
+        color: #d4af37;
+        font-weight: 500;
+        font-size: 0.6rem;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 6px 8px;
+    background: rgba(245, 240, 230, 0.08);
+    border: 1px solid #5d4c2e;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.6rem;
+    transition: all 0.2s ease;
+}
+
+    .form-control:focus {
+        outline: none;
+        border-color: #d4af37;
+        box-shadow: 0 0 6px rgba(212, 175, 55, 0.2);
+    }
+
+.input-with-icon {
+    position: relative;
+}
+
+    .input-with-icon i {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #d4af37;
+        font-size: 0.7rem;
+    }
+
+    .input-with-icon input {
+        padding-left: 25px;
+    }
+
+.toggle-password {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.6rem;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 16px;
+    margin-left: 6px;
+}
+
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #5d4c2e;
+    transition: .2s;
+    border-radius: 16px;
+}
+
+    .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        left: 2px;
+        bottom: 2px;
+        background-color: #e0d6c2;
+        transition: .2s;
+        border-radius: 50%;
+    }
+
+input:checked + .toggle-slider {
+    background-color: #d4af37;
+}
+
+    input:checked + .toggle-slider:before {
+        transform: translateX(14px);
+    }
+
+.password-fields {
+    display: none;
+    margin-top: 8px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+    .password-fields.active {
+        display: block;
+    }
+
+.mobile-field {
+    margin-top: 8px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.current-session {
+    text-align: center;
+    color: #d4af37;
+    margin-bottom: 12px;
+    padding: 6px;
+    background: rgba(212, 175, 55, 0.08);
+    border-radius: 5px;
+    border: 1px dashed #d4af37;
+    font-size: 0.7rem;
+}
+
+.device-info {
+    font-size: 0.55rem;
+    color: #a0e0a0;
+    margin-top: 2px;
+}
+
+.locked-device {
+    color: #ff6b6b;
+}
+
+.account-count {
+    text-align: center;
+    color: #e0d6c2;
+    margin-top: 12px;
+    font-size: 0.6rem;
+}
+
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.avatar-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 8px;
+    border: 1px solid #d4af37;
+}
+
+.upload-btn {
+    padding: 4px 8px;
+    background: rgba(30, 30, 40, 0.7);
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    color: #d4af37;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.6rem;
+}
+
+    .upload-btn:hover {
+        background: rgba(212, 175, 55, 0.08);
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 400px) {
+    .accounts-container {
+        padding: 12px 8px;
+        width: 98%;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .account-avatar, .default-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+
+    .avatar-preview {
+        width: 35px;
+        height: 35px;
+    }
+}
+/* استایل‌های جدید برای بخش تأیید شماره موبایل */
+.send-verification-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    font-family: 'Vazir', sans-serif;
+    transition: background-color 0.3s;
+}
+
+    .send-verification-btn:hover {
+        background-color: #45a049;
+    }
+
+    .send-verification-btn:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+.verification-code-container {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+    .verification-code-container input {
+        flex: 1;
+        padding: 8px 12px;
+    }
+
+.verify-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Vazir', sans-serif;
+    transition: background-color 0.3s;
+}
+
+    .verify-btn:hover {
+        background-color: #0b7dda;
+    }
+
+    .verify-btn:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.countdown-timer {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+@media (max-width: 480px) {
+    .movie-card {
+        min-width: 150px;
+    }
+
+    .featured-title {
+        font-size: 1.5rem;
+    }
+
+    .search-input {
+        padding: 10px 40px 10px 15px;
+    }
+}
+/* استایل‌های بخش اشتراک */
+.subscription-info {
+    text-align: center;
+    margin: 8px 0;
+    font-size: 0.7rem;
+    color: #d4af37;
+}
+
+.change-subscription-btn {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.6rem;
+    margin-top: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .change-subscription-btn:hover {
+        background: rgba(212, 175, 55, 0.2);
+    }
+
+/* استایل‌های مودال اشتراک */
+.subscription-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(30, 30, 40, 0.95);
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    padding: 15px;
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.subscription-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.subscription-option {
+    background: rgba(20, 20, 30, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .subscription-option:hover {
+        border-color: #d4af37;
+        background: rgba(212, 175, 55, 0.1);
+    }
+
+    .subscription-option h4 {
+        color: #d4af37;
+        margin-bottom: 5px;
+    }
+
+    .subscription-option p {
+        font-size: 0.7rem;
+        color: #e0d6c2;
+    }
+
+    .subscription-option .price {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+.close-modal-btn {
+    width: 100%;
+    padding: 8px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .close-modal-btn:hover {
+        background: rgba(212, 175, 55, 0.2);
+    }
+/* در استایل این صفحات */
+.back-to-platforms {
+    position: fixed;
+    top: 50px; /* ارتفاع نوار اشتراک */
+    left: 20px;
+    z-index: 100;
+}

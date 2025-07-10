@@ -1,0 +1,524 @@
+﻿@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir.woff2') format('woff2'), url('../fonts/Vazir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --gold: #FFD700;
+    --dark-gold: #C5A42B;
+    --bg-dark: #0A0A12;
+    --bg-darker: #050508;
+    --text-light: #F0F0F0;
+    --text-lighter: #FFFFFF;
+    --accent: #3A3A4E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazir', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* استایل نوار اشتراک */
+.subscription-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, rgba(212,175,55,0.9) 0%, rgba(236,200,80,0.9) 100%);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    height: 50px;
+}
+
+.subscription-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.subscription-timer {
+    background: rgba(0,0,0,0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.subscription-upgrade {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .subscription-upgrade:hover {
+        background: rgba(255,255,255,0.3);
+    }
+
+/* استایل دکمه بازگشت */
+.back-to-accounts {
+    position: fixed;
+    top: 65px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.back-btn {
+    background: rgba(212, 175, 55, 0.9);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Vazir', sans-serif;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .back-btn:hover {
+        background: rgba(212, 175, 55, 1);
+        transform: translateY(-2px);
+    }
+
+/* تضمین نمایش صحیح محتوا زیر نوار اشتراک */
+body.with-subscription-bar {
+    padding-top: 60px;
+}
+
+/* استایل پس‌زمینه */
+.background-static {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.luxury-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.03) 0%, transparent 25%), radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 25%), linear-gradient(var(--bg-darker), var(--bg-dark));
+    z-index: -1;
+}
+
+    .luxury-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('../img/persian-pattern.png') repeat;
+        opacity: 0.03;
+        z-index: -1;
+    }
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* هدر لوکس */
+.luxury-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+    padding: 2rem 0;
+}
+
+    .luxury-header::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 25%;
+        width: 50%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+.logo-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid transparent;
+    background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box, linear-gradient(135deg, var(--gold), var(--dark-gold), var(--gold)) border-box;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+    .logo-container::after {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--dark-gold), var(--gold));
+        z-index: -1;
+        opacity: 0.5;
+        filter: blur(10px);
+    }
+
+    .logo-container img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+
+.luxury-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--gold), var(--text-lighter));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+    .luxury-header h1::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+.luxury-header p {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    opacity: 0.8;
+}
+
+/* گالری پلتفرم‌ها */
+.platform-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.platform-card {
+    background: rgba(20, 20, 30, 0.7);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    position: relative;
+    cursor: pointer;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+    .platform-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--gold);
+    }
+
+.card-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+.platform-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-image::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10, 10, 18, 0.9), transparent);
+}
+
+.card-content {
+    padding: 2rem;
+    position: relative;
+}
+
+.platform-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--bg-dark);
+    position: absolute;
+    top: -35px;
+    right: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--bg-dark);
+    transition: all 0.3s ease;
+}
+
+.platform-card:hover .platform-icon {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 0 20px var(--gold);
+}
+
+.card-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-lighter);
+    padding-top: 1.5rem;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.explore-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(to right, var(--gold), var(--dark-gold));
+    color: var(--bg-dark);
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+    .explore-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+    }
+
+    .explore-btn i {
+        margin-right: 8px;
+    }
+
+/* استایل‌های ویژه کارت اشتراک */
+.subscription-card {
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+    .subscription-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(to bottom right, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05), transparent);
+        transform: rotate(30deg);
+        z-index: 0;
+    }
+
+    .subscription-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--gold), 0 0 30px rgba(255, 215, 0, 0.3);
+    }
+
+.subscribe-btn {
+    background: linear-gradient(to right, #ffd700, #ffcc00, #ffd700) !important;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+/* فوتر */
+.footer {
+    background: rgba(10, 10, 30, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 3rem 0;
+    margin-top: 5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-logo {
+    width: 100px;
+}
+
+    .footer-logo img {
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid #D4AF37;
+    }
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+    .social-links a {
+        color: #aaa;
+        font-size: 1.5rem;
+        transition: all 0.3s;
+    }
+
+        .social-links a:hover {
+            color: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .footer-links a {
+        color: #aaa;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+        .footer-links a:hover {
+            color: #D4AF37;
+        }
+
+.copyright {
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* انیمیشن‌ها */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* رسپانسیو */
+@media (max-width: 992px) {
+    .luxury-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .platform-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .luxury-header h1 {
+        font-size: 2rem;
+    }
+
+    .luxury-header p {
+        font-size: 1.1rem;
+    }
+
+    .platform-gallery {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .back-to-accounts {
+        top: 60px;
+        left: 15px;
+    }
+
+    .back-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .luxury-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .subscription-bar {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .subscription-info {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+}

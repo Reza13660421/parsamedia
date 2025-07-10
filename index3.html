@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پارسا مدیا - گالری پلتفرم‌ها</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style4.css">
+    <style>
+        .background-static {
+            background-image: url('img/1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.5;
+            filter: brightness(0.7);
+        }
+    </style>
+</head>
+<body class="with-subscription-bar">
+    <!-- نوار اشتراک -->
+    <div class="subscription-bar">
+        <div class="subscription-info">
+            <span>اشتراک طلایی پارسا مدیا</span>
+            <span class="subscription-timer" id="subscriptionTimer">
+                <i class="fas fa-clock"></i> ۱۲ روز و ۴ ساعت باقیمانده
+            </span>
+        </div>
+        <div class="subscription-upgrade" onclick="window.location.href='subscription.html'">
+            <i class="fas fa-crown"></i> تمدید اشتراک
+        </div>
+    </div>
+
+    <div class="background-static"></div>
+    <div class="luxury-bg"></div>
+
+    <!-- دکمه بازگشت به صفحه حساب‌ها -->
+    <div class="back-to-accounts">
+        <button class="back-btn" onclick="window.location.href='index2.html'">
+            <i class="fas fa-arrow-right"></i> بازگشت به حساب‌ها
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="luxury-header">
+            <div class="logo-container">
+                <img src="img/logo.jpg" alt="پارسا مدیا">
+            </div>
+            <h1>گالری پلتفرم‌های پارسا</h1>
+            <p>تجربه‌ای لوکس و منحصر به فرد از بهترین محتوای چندرسانه‌ای با کیفیت بالا</p>
+        </div>
+
+        <div class="platform-gallery">
+            <!-- پلتفرم فیلم و سریال -->
+            <div class="platform-card" onclick="window.location.href='index4.html'">
+                <div class="card-image">
+                    <img src="img/1.jpg" alt="فیلم و سریال">
+                </div>
+                <div class="card-content">
+                    <div class="platform-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h2>سینمای پارسا</h2>
+                    <p>تماشای انحصاری هزاران عنوان فیلم و سریال با کیفیت 4K HDR و دوبله اختصاصی</p>
+                    <button class="explore-btn" onclick="window.location.href='index4.html'">
+                        <i class="fas fa-play"></i> تماشا کنید
+                    </button>
+                </div>
+            </div>
+
+            <!-- پلتفرم موسیقی -->
+            <div class="platform-card" onclick="window.location.href='index5.html'">
+                <div class="card-image">
+                    <img src="img/2.jpg" alt="موزیک پلیر">
+                </div>
+                <div class="card-content">
+                    <div class="platform-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h2>گنجینه موسیقی</h2>
+                    <p>دسترسی به آرشیو بی‌نظیر موسیقی ایرانی و جهانی با کیفیت صدای Hi-Res Audio</p>
+                    <button class="explore-btn" onclick="window.location.href='index5.html'">
+                        <i class="fas fa-headphones"></i> گوش دهید
+                    </button>
+                </div>
+            </div>
+
+            <!-- پلتفرم تلویزیون -->
+            <div class="platform-card" onclick="window.location.href='index6.html'">
+                <div class="card-image">
+                    <img src="img/3.jpg" alt="تلویزیون اینترنتی">
+                </div>
+                <div class="card-content">
+                    <div class="platform-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h2>تلویزیون طلایی</h2>
+                    <p>تماشای زنده صدها شبکه تلویزیونی داخلی و بین‌المللی با کیفیت فوق العاده</p>
+                    <button class="explore-btn" onclick="window.location.href='index6.html'">
+                        <i class="fas fa-broadcast-tower"></i> تماشای زنده
+                    </button>
+                </div>
+            </div>
+
+            <!-- پلتفرم رادیو -->
+            <div class="platform-card" onclick="window.location.href='index7.html'">
+                <div class="card-image">
+                    <img src="img/4.png" alt="رادیو آنلاین">
+                </div>
+                <div class="card-content">
+                    <div class="platform-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h2>رادیو گلد</h2>
+                    <p>گوش دادن به صدها ایستگاه رادیویی از سراسر جهان با کیفیت صدای استودیویی</p>
+                    <button class="explore-btn" onclick="window.location.href='index7.html'">
+                        <i class="fas fa-volume-up"></i> شنود آنلاین
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.jpg" alt="پارسا مدیا">
+            </div>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">خانه</a>
+                <a href="#">درباره ما</a>
+                <a href="#">تماس با ما</a>
+                <a href="#">قوانین</a>
+                <a href="#">سوالات متداول</a>
+            </div>
+
+            <p class="copyright">تمامی حقوق برای شرکت برنامه سازان ایرانیان پاسارگاد محفوظ است © ۱۴۰۴</p>
+        </div>
+    </footer>
+
+    <script src="js/script2.js"></script>
+</body>
+</html>

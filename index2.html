@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;">
+    <title>پارسا مدیا - سیستم چنداکانته</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+    <div class="background-static"></div>
+
+    <div class="accounts-container">
+        <div class="persepolis-column column-left"></div>
+        <div class="persepolis-column column-right"></div>
+
+        <div class="login-header">
+            <div class="logo">
+                <img src="img/logo.jpg" alt="پارسا مدیا" class="logo-image">
+            </div>
+            <h1> پارسا مدیا </h1>
+            <!-- بعد از تگ <h1> پارسا مدیا </h1> و قبل از تگ <p> هر اکانت... -->
+            <div class="subscription-info" id="subscriptionInfo">
+                <p>اشتراک فعلی: <span id="currentSubscription">15 روز رایگان</span></p>
+                <button class="change-subscription-btn" id="changeSubscriptionBtn">خرید اشتراک</button>
+            </div>
+
+            <!-- بعد از بخش accounts-container، یک مودال برای انتخاب اشتراک اضافه کنید -->
+            <div class="subscription-modal" id="subscriptionModal">
+                <div class="modal-content">
+                    <h3>انتخاب اشتراک</h3>
+                    <div class="subscription-options">
+                        <div class="subscription-option" data-type="monthly">
+                            <h4>اشتراک ماهانه</h4>
+                            <p>حداکثر 2 اکانت</p>
+                            <p class="price">50,000 تومان</p>
+                        </div>
+                        <div class="subscription-option" data-type="quarterly">
+                            <h4>اشتراک سه ماهه</h4>
+                            <p>حداکثر 3 اکانت</p>
+                            <p class="price">120,000 تومان</p>
+                        </div>
+                        <div class="subscription-option" data-type="yearly">
+                            <h4>اشتراک یکساله</h4>
+                            <p>حداکثر 5 اکانت</p>
+                            <p class="price">400,000 تومان</p>
+                        </div>
+                    </div>
+                    <button class="close-modal-btn" id="closeModalBtn">بستن</button>
+                </div>
+            </div>
+            <p>هر اکانت فقط روی یک دستگاه می‌تواند فعال باشد</p>
+        </div>
+
+        <div class="current-session" id="currentSession">
+            <!-- اطلاعات اکانت و دستگاه فعلی نمایش داده می‌شود -->
+        </div>
+
+        <div class="accounts-list" id="accountsList">
+            <!-- اکانت‌ها به صورت داینامیک اضافه می‌شوند -->
+        </div>
+
+        <div class="account-count" id="accountCount">
+            <!-- تعداد اکانت‌ها نمایش داده می‌شود -->
+        </div>
+
+        <div class="add-account-section">
+            <button class="add-account-btn" id="addAccountBtn">
+                <i class="fas fa-plus"></i> افزودن اکانت جدید
+            </button>
+
+            <div class="max-accounts-message" id="maxAccountsMessage">
+                شما به حداکثر تعداد اکانت‌ها (۳ عدد) رسیده‌اید. برای اضافه کردن اکانت جدید، باید یکی از اکانت‌های موجود را حذف کنید.
+            </div>
+
+            <div class="add-account-form" id="addAccountForm">
+                <div class="avatar-upload">
+                    <div class="avatar-preview" id="avatarPreview">
+                        <!-- تصویر آواتار نمایش داده می‌شود -->
+                    </div>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    <button type="button" class="upload-btn" id="uploadBtn">
+                        <i class="fas fa-image"></i> انتخاب عکس پروفایل
+                    </button>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-user"></i> اطلاعات اصلی
+                    </div>
+                    <div class="form-group">
+                        <label for="accountName">نام اکانت (منحصربفرد)</label>
+                        <input type="text" id="accountName" class="form-control" placeholder="نامی برای اکانت انتخاب کنید" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-lock"></i> امنیت اکانت
+                    </div>
+
+                    <div class="toggle-password">
+                        <span>فعالسازی رمز عبور</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="enablePassword">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="password-fields" id="passwordFields">
+                        <div class="form-group">
+                            <label for="accountPassword">رمز عبور</label>
+                            <input type="password" id="accountPassword" class="form-control" placeholder="رمز عبور دلخواه وارد کنید">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="accountConfirmPassword">تکرار رمز عبور</label>
+                            <input type="password" id="accountConfirmPassword" class="form-control" placeholder="تکرار رمز عبور">
+                        </div>
+
+                        <div class="form-group mobile-field">
+                            <label for="accountMobile">شماره موبایل برای بازیابی</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                                <input type="tel" id="accountMobile" class="form-control" placeholder="09xxxxxxxxx" maxlength="11">
+                            </div>
+                            <button type="button" class="send-verification-btn" id="sendVerificationBtn">
+                                ارسال کد تأیید
+                            </button>
+                            <div class="verification-code-container" id="verificationCodeContainer" style="display: none;">
+                                <input type="text" id="verificationCode" class="form-control" placeholder="کد تأیید ۴ رقمی" maxlength="4">
+                                <button type="button" class="verify-btn" id="verifyBtn">
+                                    تأیید شماره
+                                </button>
+                            </div>
+                            <small>در صورت فراموشی رمز، کد بازیابی به این شماره ارسال می‌شود</small>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="account-btn logout-btn" id="cancelAddBtn">
+                        <i class="fas fa-times"></i> انصراف
+                    </button>
+                    <button type="button" class="account-btn login-btn" id="confirmAddBtn">
+                        <i class="fas fa-check"></i> ایجاد اکانت
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script1.js" defer></script>
+</body>
+</html>

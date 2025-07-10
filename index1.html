@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;">
+    <title>پارسا مدیا - ورود با موبایل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="background-static"></div>
+
+    <div class="login-container">
+        <div class="persian-border border-top"></div>
+        <div class="persepolis-column column-left"></div>
+        <div class="persepolis-column column-right"></div>
+
+        <div class="login-header">
+            <div class="logo">
+                <img src="img/logo.jpg" alt="پارسا مدیا" class="logo-image">
+            </div>
+            <h1>پارسا مدیا</h1>
+            <p>پلتفرم جامع چندرسانه‌ای با الهام از شکوه تمدن پارسی</p>
+        </div>
+
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="mobile"><i class="fas fa-mobile-alt"></i> شماره موبایل</label>
+                <input type="tel" id="mobile" class="form-control" placeholder="09xxxxxxxxx" required maxlength="11">
+            </div>
+
+            <button type="submit" class="btn-send">
+                <i class="fas fa-paper-plane"></i> ارسال کد تایید
+            </button>
+        </form>
+
+        <div class="verify-section" id="verifySection">
+            <div class="form-group">
+                <label for="code"><i class="fas fa-shield-alt"></i> کد تایید ارسال شده</label>
+                <div class="code-inputs">
+                    <input type="text" class="code-input" maxlength="1" data-index="1">
+                    <input type="text" class="code-input" maxlength="1" data-index="2">
+                    <input type="text" class="code-input" maxlength="1" data-index="3">
+                    <input type="text" class="code-input" maxlength="1" data-index="4">
+                    <input type="text" class="code-input" maxlength="1" data-index="5">
+                    <input type="text" class="code-input" maxlength="1" data-index="6">
+                </div>
+            </div>
+
+            <button class="btn-verify" id="verifyBtn">
+                <i class="fas fa-check-circle"></i> تایید و ورود
+            </button>
+
+            <div class="resend-code">
+                <span>کد را دریافت نکردید؟</span>
+                <a href="#" id="resendLink">ارسال مجدد کد</a>
+                <span id="timer"></span>
+            </div>
+        </div>
+
+        <div class="persian-border border-bottom"></div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>
